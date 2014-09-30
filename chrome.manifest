@@ -1,0 +1,4 @@
+content kopy content/
+locale kopy en-US locale/en-US/
+
+overlay chrome://komodo/content/komodo.xul chrome://kopy/content/overlay.xul

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- Copyright (c) 2000-2013 ActiveState Software Inc. -->
+<!-- See the file LICENSE.txt for licensing information. -->
+<!DOCTYPE overlay PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" [
+  <!ENTITY % kopyDTD SYSTEM "chrome://kopy/locale/kopy.dtd">
+  %kopyDTD;
+]>
+
+<overlay id="kopyOverlay"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script src="chrome://kopy/content/kopy.js" type="application/x-javascript;version=1.7"/>
+
+    <menupopup id="editorContextMenu">
+        <menuitem id="editor-context-kopy"
+                  insertafter="editor-context-sep-extensions"
+                  oncommand="ko.commands.doCommand('cmd_kopySelection', event)"
+                  label="&kopySelection.desc;"/>
+    </menupopup>
+
+    <broadcasterset id="broadcasterset_global">
+
+        <broadcaster
+            id="bc_kopy"
+            observes="cmd_kopy"
+            key="key_cmd_kopy"
+            desc="&kopySelection.desc;"
+            autoCheck="false"/>
+
+    </broadcasterset>
+
+    <commandset
+        id="cmdset_kopy"
+        oncommandupdate="ko.commands.updateCommandset(this, event)"
+        commandupdater="true">
+
+        <command
+            id="cmd_kopy"
+            key="key_cmd_kopy"
+            oncommand="ko.commands.doCommand('cmd_kopySelection', event)"
+            desc="&kopySelection.desc;"/>
+
+    </commandset>
+
+</overlay>
